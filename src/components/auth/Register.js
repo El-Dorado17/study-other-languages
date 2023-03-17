@@ -56,8 +56,12 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Your Bilingual Journey Starts Here!</h1>
-                <h2>*Breif explanation of SOL*</h2>
+                <h1 className="h3 mb-3 font-weight-normal">What is S.O.L.???</h1>
+                <h3>"SOL," Spanish for sun, is an app that allows pupils & mentors, children & parents, 
+                    or besties & pals to <u>Study Other Languages</u>! Simply put, you and a companion make separate accounts: The mentor, 
+                    who speaks the native and target language the student would like to learn, has the ability to 
+                    create and delete words/phrases for the student to study. </h3>
+                <h3>*Sun pun to register*</h3>
                 <fieldset>
                     <label htmlFor="fullName"> Full Name </label>
                     <input onChange={updateCustomer}
