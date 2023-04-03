@@ -50,7 +50,6 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }
@@ -60,3 +59,24 @@ fieldset {
     bottom: -2rem;
 }
 
+.link--register{
+    background-color: white;
+    width: 20%;
+}
+
+/*
+body {
+    background-image: url("Sol_2.jpg");
+    background-color: #4ea0ffc5;
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+   */
+
+   body{
+    background-color: rgb(0, 0, 0);
+   }
+
+   .fullName{
+    width: 40%;
+   }

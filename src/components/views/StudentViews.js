@@ -9,8 +9,6 @@ export const StudentViews = () => {
             <Route path="/" element={
                 <>
                     <h1 className="title--main">Welcome, Student, to SOL!</h1>
-		<div>Creative line about the app. 
-			Add more stuff here after MVP. </div>
 
                     <Outlet />
                 </>
