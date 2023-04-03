@@ -20,7 +20,7 @@ export const Login = () => {
                         staff: user.isStaff
                     }))
 
-                    navigate("/")
+                    navigate("/cards")
                 }
                 else {
                     window.alert("Sorry Muchacho... Try something else!")

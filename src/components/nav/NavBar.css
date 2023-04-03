@@ -2,11 +2,13 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    height: 70px;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    padding-top: 27px;
 }
 
 .navbar__logout {
