@@ -56,7 +56,7 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-            <h1 className="h3 mb-3 font-weight-normal">What is S.O.L.???</h1>
+                <h1 className="h3 mb-3 font-weight-normal">What is S.O.L.???</h1>
                 <h3>"SOL," Spanish for sun, is an app that allows pupils & mentors, children & parents, 
                     or besties & pals to <u>Study Other Languages</u>! Simply put, you and a companion make separate accounts: The mentor, 
                     who speaks the native and target language the student would like to learn, has the ability to 
