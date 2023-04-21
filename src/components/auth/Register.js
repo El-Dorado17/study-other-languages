@@ -61,12 +61,11 @@ export const Register = (props) => {
                     or besties & pals to <u>Study Other Languages</u>! Simply put, you and a companion make separate accounts: The mentor, 
                     who speaks the native and target language the student would like to learn, has the ability to 
                     create and delete words/phrases for the student to study. </h3>
-                <h3>*Sun pun to register*</h3>
                 <fieldset>
                     <label htmlFor="fullName"> Full Name </label>
                     <input onChange={updateCustomer}
-                           type="text" id="fullName" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
+                        type="text" id="fullName" className="form-control"
+                        placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>

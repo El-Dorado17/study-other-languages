@@ -30,11 +30,11 @@ THIS IS THE DEFAULT STATE OF MY CARD OBJECT:
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-
-  //TODO: Learn how to explain this
+/*
+  TODO: Learn how to explain this
   const localLanguageUser = localStorage.getItem("language_user");
   const languageUserObject = JSON.parse(localLanguageUser);
-
+*/
   useEffect(() => {
     fetch("http://localhost:8088/initialIndexCards?_expand=category")
       .then((response) => response.json())
