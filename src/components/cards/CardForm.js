@@ -1,20 +1,10 @@
+//? Importing useEffect, useState, and useNavigate
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; //? this one allows for a re-route after an action (ex: when you click "submit" you're taken to the main page, etc.)
 
+//? CardForm function takes up the entire page
 export const CardForm = () => {
-  /* define a card , update = useState()
-Give that object the text field properties it needs and set to empty strings
-word: ""
-translation: ""
-
-Q.) //!What does update mean? 
-A.) I think the declaration below means the initial state of my object is 
-empty strings and 0's/false but it will update as a user inputs things 
-
-THIS IS THE DEFAULT STATE OF MY CARD OBJECT: 
-
-*/
-  const [card, update] = useState({
+  const [card, update] = useState({ //? Here I'm setting the template values of the card for whern you are in the create form!
     word: "",
     exampleSentence: "",
     translatedWord: "",
@@ -24,17 +14,10 @@ THIS IS THE DEFAULT STATE OF MY CARD OBJECT:
   });
 
   const [cards, setCards] = useState([]);
-
-  //I have an idea: Bring in the categories in another useEffect Fetch and
-  //only iterate through them!
   const [categories, setCategories] = useState([]);
-
   const navigate = useNavigate();
-/*
-  TODO: Learn how to explain this
-  const localLanguageUser = localStorage.getItem("language_user");
-  const languageUserObject = JSON.parse(localLanguageUser);
-*/
+
+  //? This fetch has an expand query that reaches another layer deep into the database to get the actual names of the categories; not just their ID's
   useEffect(() => {
     fetch("http://localhost:8088/initialIndexCards?_expand=category")
       .then((response) => response.json())
