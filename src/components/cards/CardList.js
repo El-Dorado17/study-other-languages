@@ -40,7 +40,7 @@ export const CardList = () => {
   );
 
 
-
+  //? function with a delete request; when delete button is clicked; this removes the card (using the ID) and then re-fetches the cards to show it's gone!
   const deleteButton = (cardObj) => {
     return (
       <button
