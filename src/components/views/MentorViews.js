@@ -6,7 +6,7 @@ import { DeleteCard } from "../cards/Card"
 
 export const MentorViews = () => {
 	return (
-        <Routes>
+        <Routes> 
             <Route path="/" element={
                 <>
                     <h1 className="title--main">Welcome, Mentor, to SOL!</h1>

@@ -204,6 +204,8 @@ THIS IS THE DEFAULT STATE OF MY CARD OBJECT:
           />
         </div>
       </fieldset>
+
+      
       <button
         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
         className="btn btn-primary"
