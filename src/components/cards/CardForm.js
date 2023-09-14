@@ -26,7 +26,7 @@ export const CardForm = () => {
       });
   }, []);
 
-  //This one is for the categories only for my select/option
+  //? This fetch gets the categories to help the query above
   useEffect(
     () => {
       fetch("http://localhost:8088/categories")
@@ -35,13 +35,13 @@ export const CardForm = () => {
           setCategories(categoryArray);
         });
     },
-    [] // When this array is empty, you are observing initial component state
+    [] //? When this array is empty, you are observing initial component state
   );
 
+  //? Function that turns the data from transient state to permanent state 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
-
-    // TODO: Create the object to be saved to the API
+    event.preventDefault()
+    //? Create the object to be saved to the API
     const cardObjectToSendToAPI = {
       cardId: card.id,
       word: card.word,
@@ -52,7 +52,7 @@ export const CardForm = () => {
       formal: card.formal,
     };
 
-    // TODO: Perform the fetch() to POST the object to the API
+    //? This is my post request where we take the card the user made (on line 45) and POST it to the API
     return fetch("http://localhost:8088/initialIndexCards", {
       method: "POST",
       headers: {
@@ -62,12 +62,12 @@ export const CardForm = () => {
     })
       .then((response) => response.json())
       .then(() => {
-        navigate("/cards"); //! idk what this means yet, find out after lunch. also fix
+        navigate("/cards"); //? After posting, we're auto-navigated top the /cards page, which is the main tab that displays all the cards in the database (which includes the new one we make)
       });
   };
 
-  //select
 
+  //? Below is all the HTML the user will actually see and interact with. Above are all the functions that do something as the user decides to, but below is actually rendered
   return (
     <form className="cardForm">
       <h2 className="cardForm_Title">New Card</h2>
@@ -76,12 +76,13 @@ export const CardForm = () => {
         <div className="form-group">
           <label htmlFor="word">Word:</label>
           <input
-            required
-            autoFocus
-            type="text"
-            className="form-control" //idk what this line is doing yet
-            placeholder="Apple."
-            value={card.word}
+            required  //? as it says, this is needed to function
+            autoFocus //? Just learned this one; autofocus let's the users cursor be active here as soon as the page loads. Very neat!
+            type="text" //? expected input
+            className="form-control" //? These classnames are for styling purposes
+            placeholder="Apple." //? placeholder ready to be written over
+            //? When this field gets value, the change event will fire to set this card value as what we input. 
+            value={card.word} //! Transient state until we click Create Card at the bottom!
             onChange={(evt) => {
               const copy = { ...card };
               copy.word = evt.target.value;
