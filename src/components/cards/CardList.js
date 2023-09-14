@@ -1,3 +1,4 @@
+//? See CardForm.js for import explanations
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cards.css";
@@ -6,12 +7,13 @@ export const CardList = () => {
   const [cards, setCards] = useState([]);
   const [filteredCards, setfilteredCards] = useState([]);
   const [categories, setCategories] = useState([]);
-  // const [translation, setTranslation] = useState(false);
   const navigate = useNavigate();
 
+  //? Saves the logged in user from local storage as languserobj variable beacuse they contain a staff boolean. Only staff can do certain things
   const localLanguageUser = localStorage.getItem("language_user");
   const languageUserObject = JSON.parse(localLanguageUser);
 
+//? fetching cards and categories initially non translated 
   useEffect(() => {
     fetch("http://localhost:8088/initialIndexCards?_expand=category")
       .then((response) => response.json())
@@ -25,6 +27,7 @@ export const CardList = () => {
       });
   }, []);
 
+//? Fetching categories so we can use their actual name, not just their ID
   useEffect(
     () => {
       fetch("http://localhost:8088/categories")
@@ -36,38 +39,7 @@ export const CardList = () => {
     [] // When this array is empty, you are observing initial component state
   );
 
-  /*
-set false as english and true as spanish
 
-The state needs to be simultaneously set to false onClick
-
-In the return
- <button onClick = { () => {setTranslation(true)}}> </button>
-
-
-!Below is the function used for the button to switch instead of CSS flip-card feature
-  const checkTranslate = (card) => {
-    return card.translate ? (
-      <>
-        <div className="language2">
-          {card.translatedWord}
-          <div>{card.translatedExampleSentence}</div>
-          <div>
-            {card.categoryId} - {card.category.translatedCategory}
-          </div>
-        </div>
-      </>
-    ) : (
-      <div className="language1">
-        {card.word}
-        <div>{card.exampleSentence}</div>
-        <div>
-          {card.categoryId} - {card.category.category}
-        </div>
-      </div>
-    );
-  };
-*/
 
   const deleteButton = (cardObj) => {
     return (
@@ -101,10 +73,10 @@ In the return
       ) : (
         <> </>
       )}
-     <div></div> 
+      <div></div> 
 
-     <select className="categoryFilter" onChange={(e) => {
-   if(e.target.value === "showAll"){setfilteredCards(cards)}else{
+      <select className="categoryFilter" onChange={(e) => {
+    if(e.target.value === "showAll"){setfilteredCards(cards)}else{
     const filtered = cards.filter((card)=> card.categoryId === parseInt(e.target.value) )
     setfilteredCards(filtered);
             }}}> 
@@ -116,7 +88,7 @@ In the return
             </option>
           );
         })}
-         <option value="showAll">Show all</option>
+          <option value="showAll">Show all</option>
 
       </select>
       
@@ -126,7 +98,7 @@ In the return
         {filteredCards.map((card, index) => {
           return (
             <section className="card">
-               {languageUserObject.staff ? <>{deleteButton(card)}</> : <> </>}
+                {languageUserObject.staff ? <>{deleteButton(card)}</> : <> </>}
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
@@ -151,10 +123,6 @@ In the return
                   </div>
                 </div>
               </div>
-
-              
-
-             
             </section>
           );
         })}
@@ -164,14 +132,34 @@ In the return
 };
 
 /*
- Only ONE button should change state when clicked; rn all of them change onClick
- Make buttons able to switch back and forth when clicked - Toggle State?
- Upon delete, everything goes away until refresh
+!For reference, here is a alternate version of a click-to-translate button
 
-?Try and implement a filter by category!
+  /*
+set false as english and true as spanish
+<button onClick = { () => {setTranslation(true)}}> </button>
+-----Below is the function used for the button to switch instead of CSS flip-card feature-----
+  const checkTranslate = (card) => {
+    return card.translate ? (
+      <>
+        <div className="language2">
+          {card.translatedWord}
+          <div>{card.translatedExampleSentence}</div>
+          <div>
+            {card.categoryId} - {card.category.translatedCategory}
+          </div>
+        </div>
+      </>
+    ) : (
+      <div className="language1">
+        {card.word}
+        <div>{card.exampleSentence}</div>
+        <div>
+          {card.categoryId} - {card.category.category}
+        </div>
+      </div>
+    );
+  };
 
-
-!INCASE I CHANGE MY MIND, HERE IS THE CODE FOR THE CLICK-TO-TRANSLATE BUTTON INSTEAD
 <button
                 onClick={() => {
                   if (card.translate === true) {

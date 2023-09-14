@@ -97,7 +97,7 @@ export const CardForm = () => {
           <label htmlFor="description">Example Sentence:</label>
           <input
             required
-            autoFocus
+            autoFocus //? every autofocus after basically means when user presses tab key, they'll auto move to the next field!
             type="text"
             className="form-control"
             placeholder="The red apple."
@@ -158,9 +158,8 @@ export const CardForm = () => {
           update(copy);
         }}
       >
-       
-        <option value="placeholder">Select a category</option>
 
+        <option value="placeholder">Select a category</option>
         {categories.map((category) => {
           return (
             <option value={category.id} key={category.id}>
@@ -169,10 +168,6 @@ export const CardForm = () => {
           );
         })}
       </select>
-
-      {/*this is a comment
-// IDK why this is not reading as a function: //! bc I didn't bring in the data I needed
-        */}
 
       <fieldset>
         <div className="form-group5">
@@ -191,7 +186,7 @@ export const CardForm = () => {
 
       
       <button
-        onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+        onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} //? All transient state turns permanent here. This function contains the post request (line 42)
         className="btn btn-primary"
       >
         Create card
