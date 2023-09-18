@@ -63,10 +63,10 @@ export const CardList = () => {
   };
 
   return (
-    <>
-      {languageUserObject.staff ? (
+    <> 
+      {languageUserObject.staff ? ( 
         <>
-          <button onClick={() => navigate("/card/create")}>
+          <button onClick={() => navigate("/card/create")}> {/* //? checking if user is staff (that data is in local storage) if so, display create-a-card button */}
             Create A New Card
           </button>
         </>
@@ -75,7 +75,7 @@ export const CardList = () => {
       )}
       <div></div> 
 
-      <select className="categoryFilter" onChange={(e) => {
+      <select className="categoryFilter" onChange={(e) => {           {/* //? Filter by category finctionality. Very proud of this! */}
     if(e.target.value === "showAll"){setfilteredCards(cards)}else{
     const filtered = cards.filter((card)=> card.categoryId === parseInt(e.target.value) )
     setfilteredCards(filtered);
