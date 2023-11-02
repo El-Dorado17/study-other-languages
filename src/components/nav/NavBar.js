@@ -1,5 +1,9 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom" //? When you click a link, you're navigated to the corresponding page
 import "./NavBar.css"
+
+
+
+
 
 export const NavBar = () => {
     const navigate = useNavigate()
@@ -7,7 +11,7 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/cards">Cards</Link>
+                <Link className="navbar__link" to="/cards">Cards</Link> 
             </li>
             {
                 localStorage.getItem("language_user")
@@ -23,3 +27,4 @@ export const NavBar = () => {
     )
 }
 
+// ? Click and you'll be navigated to URL ending in "/cards" which is the list of cards
